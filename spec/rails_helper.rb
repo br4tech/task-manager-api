@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'support/factory_bot'
 require 'database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -40,19 +41,6 @@ RSpec.configure do |config|
     end
   end
 
-  config.include FactoryBot::Syntax::Methods
-
-
-  Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
-      # Choose a test framework:
-      with.test_framework :rspec
-      # Or, choose the following (which implies all of the above):
-      with.library :rails
-    end
-  end
-
-
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -80,4 +68,13 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+    # Or, choose the following (which implies all of the above):
+    with.library :rails
+  end
 end

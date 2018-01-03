@@ -32,10 +32,14 @@ group :development, :test do
 end
 
 group :test do
+  # Strategies for cleaning databases in Ruby. Can be used to ensure a clean state for testing. http://databasecleaner.github.io
    gem 'database_cleaner'
-   gem 'shoulda-matchers', '~> 3.1'
-   gem 'factory_bot_rails'
-   gem 'faker'
+   # Collection of testing matchers extracted from Shoulda http://matchers.shoulda.io
+   gem 'shoulda-matchers'
+   # A library for generating fake data such as names, addresses, and phone numbers.
+   gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+   # Factory Bot ♥ Rails https://thoughtbot.com/services/ruby-…
+   gem "factory_bot_rails", "~> 4.0"
 end
 
 group :development do
