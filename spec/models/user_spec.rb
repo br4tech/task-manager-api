@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
 
   # Executa antes de cada teste
   # before(:each){}
-  # before{ user.name = " "}
+  # before{ user.name = ' '}
   # Se estiver em branco não é valido
   #   it {expect(user).not_to be_valid}
   # end
@@ -49,6 +49,6 @@ RSpec.describe User, type: :model do
   it{ is_expected.to validate_presence_of(:email)}
   it{ is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity  }
   it{ is_expected.to validate_confirmation_of(:password)}
-  it{ is_expected.to allow_value("guilherme.tr.silva@gmail.com").for(:email)}
+  it{ is_expected.to allow_value('guilherme.tr.silva@gmail.com').for(:email)}
 
 end
