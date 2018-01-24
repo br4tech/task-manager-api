@@ -50,5 +50,15 @@ RSpec.describe User, type: :model do
   it{ is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity  }
   it{ is_expected.to validate_confirmation_of(:password)}
   it{ is_expected.to allow_value('guilherme.tr.silva@gmail.com').for(:email)}
+  it{ is_expected.to validate_uniqueness_of(:auth_token)}
+
+  #Testando um metodo de instância
+  describe '#info'  do
+     it 'return email and create_at' do
+       user.save!
+       expect(user.info).to eq("#{user.email} - #{user.created_at}")
+     end
+  end
+
 
 end

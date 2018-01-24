@@ -50,6 +50,7 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.3)
     byebug (9.1.0)
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     database_cleaner (1.6.2)
@@ -88,8 +89,15 @@ GEM
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
     puma (3.11.0)
     rack (2.0.3)
+    rack-ssl (1.4.1)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.6)
@@ -176,7 +184,9 @@ DEPENDENCIES
   faker!
   listen (~> 3.0.5)
   mysql2 (>= 0.3.18, < 0.5)
+  pry-rails
   puma (~> 3.0)
+  rack-ssl
   rails (~> 5.0.2)
   rspec-rails (~> 3.6)
   shoulda-matchers

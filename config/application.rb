@@ -27,6 +27,9 @@ module TaskManagerApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+    config.force_ssl = true  
+
 
   end
 end
