@@ -44,4 +44,22 @@ RSpec.describe 'Sessions API', type: :request do
     end
   end
 
+  describe 'DELETE /sessions/:id' do
+    let(:auth_token){ user.auth_token }
+
+    before do
+       delete "/sessions/#{auth_token}",params: {}, headers: headers
+    end
+
+    it 'returns satatus code 201' do
+      # Verifico se o retorno e vazio 204
+       expect(response).to have_http_status(204)
+    end
+
+    it 'changes the user auth token' do
+      # Espero que não exita nenhuma usuario com esse token no banco
+       expect(User.find_by(auth_token: auth_token)).to be_nil
+    end
+
+  end
 end
