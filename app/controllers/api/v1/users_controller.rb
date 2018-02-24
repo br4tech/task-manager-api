@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+
   respond_to :json
 
   def show
@@ -41,5 +42,6 @@ class Api::V1::UsersController < ApplicationController
   def user_params
     params.permit  [:email, :password, :password_confirmation]
   end
+
 
 end
