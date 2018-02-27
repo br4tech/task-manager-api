@@ -4,6 +4,8 @@ RSpec.describe 'Users API', type: :request do
   # Create ele salva no banco de dados: teste de requisição precisa salvar no banco
   # Build so cria o objeto em memoria e não toca no banco de dados : teste mais leve
 
+  before { host! 'api.taskmanager.test'}
+  
   let!(:user){ create(:user) }
   let(:user_id){ user.id }
   # Para evitar duplicidade
@@ -14,8 +16,6 @@ RSpec.describe 'Users API', type: :request do
       'Authorization' => user.auth_token
     }
   end
-
-  before { host! 'api.taskmanager.test'}
 
   describe 'GET /users/:id' do
     before do
@@ -83,27 +83,27 @@ RSpec.describe 'Users API', type: :request do
     context "when the request params are valid" do
       let(:user_params){{ email: 'new@email.com'}}
 
-     it 'return status code 200' do
-       expect(response).to have_http_status(200)
-     end
+      it 'return status code 200' do
+        expect(response).to have_http_status(200)
+      end
 
-     it 'returns the json data for the updated user' do
+      it 'returns the json data for the updated user' do
         expect(json_body[:email]).to eq(user_params[:email])
-     end
+      end
 
     end
 
     context "when the request params are invalid" do
       let(:user_params){{ email: 'invalid_email@'}}
 
-     it 'return status code 422' do
-       expect(response).to have_http_status(422)
-     end
+      it 'return status code 422' do
+        expect(response).to have_http_status(422)
+      end
 
 
-     it 'return the json data for the erros' do
-       expect(json_body).to have_key(:errors)
-     end
+      it 'return the json data for the erros' do
+        expect(json_body).to have_key(:errors)
+      end
 
     end
   end
