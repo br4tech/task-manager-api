@@ -11,6 +11,9 @@ class User < ApplicationRecord
   #Sempre quando for criado um usuario executa o metodo generate_authentication_token!
   before_create :generate_authentication_token!
 
+  # Sempre quando o usuario for deletado remover também as tasks desse usuario
+  has_many :tasks, dependent: :destroy
+
   def info
     "#{email} - #{created_at} - Token: #{Devise.friendly_token}"
   end

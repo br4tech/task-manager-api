@@ -25,6 +25,9 @@ RSpec.describe User, type: :model do
   # Somente vai instânciar o user quando o mesmo for chamado no it
   let(:user){ build(:user) }
   it { expect(user).to respond_to(:email) }
+  
+  # Verifica se a relão também foi removida
+  it{ is_expected.to have_many(:tasks).dependent(:destroy)}
 
   # Utilização do shoulda-matchers: contexto agrupador de teste onde se tem algum em comum
 
