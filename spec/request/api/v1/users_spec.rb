@@ -10,11 +10,12 @@ RSpec.describe 'Users API', type: :request do
   let(:headers) do
     {
       'Accept' => 'application/vnd.taskmanager.v1',
-      'Content-type' => Mime[:json].to_s
+      'Content-type' => Mime[:json].to_s,
+      'Authorization' => user.auth_token
     }
   end
 
-  before { host! 'api.taskmanager.dev'}
+  before { host! 'api.taskmanager.test'}
 
   describe 'GET /users/:id' do
     before do
