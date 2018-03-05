@@ -3,7 +3,11 @@ class Api::V2::TasksController < ApplicationController
 
   def index
     tasks = current_user.tasks
-    render json: { tasks: tasks }, status: 200
+    # Não utiliza o serializer dessa forma
+    # render json: { tasks: tasks }, status: 200
+    
+    # Desta forma é utilizado o serializer
+    render json: tasks , status: 200
   end
 
   def show
