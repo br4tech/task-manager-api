@@ -1,12 +1,12 @@
 class Api::V2::UsersController < ApplicationController
   # Verifica se existe um usuario na apolicação, caso não tiver encontrado retornado o 201
   before_action :authenticate_with_token!, only:[:update, :destroy]
-  respond_to :json
+
 
   def show
     begin
-      @user = User.find(params[:id])
-      respond_with @user
+      user = User.find(params[:id])
+       render json: user, status: 200
     rescue
       head 404
     end
