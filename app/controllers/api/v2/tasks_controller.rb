@@ -2,10 +2,10 @@ class Api::V2::TasksController < ApplicationController
   before_action :authenticate_with_token!
 
   def index
-    tasks = current_user.tasks
+    tasks = current_user.tasks.ransack(params[:q]).result
     # Não utiliza o serializer dessa forma
     # render json: { tasks: tasks }, status: 200
-    
+
     # Desta forma é utilizado o serializer
     render json: tasks , status: 200
   end
